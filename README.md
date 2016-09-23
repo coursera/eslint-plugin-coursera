@@ -1,6 +1,7 @@
 # eslint-plugin-coursera
 
-Rules used by Coursera developers
+Rules used by Coursera developers that don't (yet) exist elsewhere. Feel free to open an issue
+if you consume this package and run into issues.
 
 ## Installation
 
@@ -36,14 +37,20 @@ Then configure the rules you want to use under the rules section.
 ```json
 {
     "rules": {
-        "coursera/rule-name": 2
+        "coursera/webdriverio-no-xdescribe": 2,
+        "coursera/webdriverio-only-single-describe": 2,
+        "coursera/deprecate-require": 2,
+        "coursera/deprecate-module-property": 2
     }
 }
 ```
 
 ## Supported Rules
 
-* Fill in provided rules here
+* coursera/webdriverio-no-xdescribe: Disallow xdescribe in webdriverio. Instead prefer ignoring tests via the ignore configuration in webdriverio configuration.
+* coursera/webdriverio-only-single-describe: Only allow a single describe per spec. Good if your tests are run in a parallelized fashion.
+* coursera/deprecate-require: Warn against requiring certain modules
+* coursera/deprecate-module-property: Warn against using certain properties on certain modules
 
 
 

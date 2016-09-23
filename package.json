@@ -1,0 +1,31 @@
+{
+  "name": "eslint-plugin-coursera",
+  "version": "0.0.1",
+  "description": "Custom ESLint rules made by Coursera developers for smoother development",
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "eslint-plugin"
+  ],
+  "author": "Lewis Chung",
+  "main": "lib/index.js",
+  "scripts": {
+    "prepublish": "babel src -d lib",
+    "test": "mocha tests --recursive --compilers js:babel-register"
+  },
+  "dependencies": {
+    "requireindex": "~1.1.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.11.4",
+    "babel-preset-es2015": "^6.13.2",
+    "babel-register": "^6.11.6",
+    "eslint": "~2.6.0",
+    "lodash.defaults": "^4.2.0",
+    "mocha": "^2.4.5"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "license": "Apache 2.0"
+}

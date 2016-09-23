@@ -1,7 +1,6 @@
-# xdescribe does not work in webdriverio to blacklist files because webdriverio does not prescan files for tests. when using xdescribe, selenium will still boot up a node in order to try to serve that file which is a waste. (webdriverio-no-xdescribe)
+# webdriverio-no-xdescribe
 
-Please describe the origin of the rule here.
-
+xdescribe does not work in webdriverio to blacklist files because webdriverio does not prescan files for tests. when using xdescribe, selenium will still boot up a node in order to try to serve that file which is a waste. (webdriverio-no-xdescribe)
 
 ## Rule Details
 
@@ -11,7 +10,11 @@ The following patterns are considered warnings:
 
 ```js
 
-// fill me in
+xdescribe('login page', () => {
+  it('renders login form', () => {
+    ...
+  });
+});
 
 ```
 
@@ -19,7 +22,11 @@ The following patterns are not warnings:
 
 ```js
 
-// fill me in
+describe('login page', () => {
+  it('renders login form', () => {
+    ...
+  });
+});
 
 ```
 

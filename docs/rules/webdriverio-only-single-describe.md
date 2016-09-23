@@ -1,4 +1,4 @@
-# Encourage Better Parallelization
+# Encourage Better Parallelization (webdriverio-only-single-describe)
 
 Since WebdriverIO parallelization works on a file per file basis, encourage developers to not have multiple describe blocks in the same file. Instead create a new file (webdriverio-only-single-describe)
 

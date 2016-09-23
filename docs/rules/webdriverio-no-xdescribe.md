@@ -1,4 +1,4 @@
-# webdriverio-no-xdescribe
+# Encourage configuration based ignoring over programmatic ignoring (webdriverio-no-xdescribe)
 
 xdescribe does not work in webdriverio to blacklist files because webdriverio does not prescan files for tests. when using xdescribe, selenium will still boot up a node in order to try to serve that file which is a waste. (webdriverio-no-xdescribe)
 

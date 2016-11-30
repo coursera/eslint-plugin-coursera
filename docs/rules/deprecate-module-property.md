@@ -22,5 +22,5 @@ coursera/deprecate-module-property:
           message: 'Use CourseStore.getCourseId() instead.'
         -
           property: 'courseSlug'
-          message: 'Use CourseStore.getCousreSlug() instead.'
+          message: 'Use CourseStore.getCourseSlug() instead.'
 ```

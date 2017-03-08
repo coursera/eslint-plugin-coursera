@@ -16,12 +16,11 @@ module.exports = {
       category: "webdriverio",
       recommended: false
     },
-    fixable: null,  // or "code" or "whitespace"
+    fixable: null, // or "code" or "whitespace"
     schema: []
   },
 
   create: function(context) {
-
     //----------------------------------------------------------------------
     // Helpers
     //----------------------------------------------------------------------
@@ -33,10 +32,10 @@ module.exports = {
     function findTopLevelXDescribeExpressions(programNode) {
       const topLevelNodes = programNode.body;
       return topLevelNodes
-        .filter(node => node.type === 'ExpressionStatement')
-        .filter(node => node.expression.type === 'CallExpression')
+        .filter(node => node.type === "ExpressionStatement")
+        .filter(node => node.expression.type === "CallExpression")
         .map(node => node.expression)
-        .filter(node => node.callee.name === 'xdescribe');
+        .filter(node => node.callee.name === "xdescribe");
     }
 
     //----------------------------------------------------------------------
@@ -44,13 +43,14 @@ module.exports = {
     //----------------------------------------------------------------------
     return {
       Program(node) {
-        findTopLevelXDescribeExpressions(node)
-          .forEach(topLevelXDescribeExpression => {
-            context.report(
-              topLevelXDescribeExpression,
-              'Do not use xdescribe to blacklist tests. Instead, change the filename suffix to `.ignore.js`'
-            );
-          });
+        findTopLevelXDescribeExpressions(
+          node
+        ).forEach(topLevelXDescribeExpression => {
+          context.report(
+            topLevelXDescribeExpression,
+            "Do not use xdescribe to blacklist tests. Instead, change the filename suffix to `.ignore.js`"
+          );
+        });
       }
     };
   }

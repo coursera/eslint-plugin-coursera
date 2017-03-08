@@ -15,7 +15,7 @@ module.exports = {
       category: "webdriverio",
       recommended: false
     },
-    fixable: null,  // or "code" or "whitespace"
+    fixable: null, // or "code" or "whitespace"
     schema: []
   },
 
@@ -26,10 +26,10 @@ module.exports = {
 
     function getDescribeExpressions(nodeArray) {
       return nodeArray
-        .filter(node => node.type === 'ExpressionStatement')
-        .filter(node => node.expression.type === 'CallExpression')
-        .filter(node => node.expression.callee.type === 'Identifier')
-        .filter(node => node.expression.callee.name === 'describe');
+        .filter(node => node.type === "ExpressionStatement")
+        .filter(node => node.expression.type === "CallExpression")
+        .filter(node => node.expression.callee.type === "Identifier")
+        .filter(node => node.expression.callee.name === "describe");
     }
 
     //----------------------------------------------------------------------
@@ -42,14 +42,13 @@ module.exports = {
 
         if (describeExpressions.length > 1) {
           const notFirstDescribeExpressions = describeExpressions.slice(1);
-          notFirstDescribeExpressions
-            .forEach(expression => {
-              context.report(
-                expression,
-                'WebdriverIO parallelization works by splitting up work by files, not by describe blocks. ' +
-                'It is recommended that you put this describe block in a separate file.'
-              );
-            });
+          notFirstDescribeExpressions.forEach(expression => {
+            context.report(
+              expression,
+              "WebdriverIO parallelization works by splitting up work by files, not by describe blocks. " +
+                "It is recommended that you put this describe block in a separate file."
+            );
+          });
         }
       }
     };

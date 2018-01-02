@@ -37,7 +37,7 @@ Add `coursera` to the plugins section of your `.eslintrc` configuration file. Yo
 * [coursera/webdriverio-only-single-describe](docs/rules/webdriverio-only-single-describe.md): Only allow a single describe per spec. Good if your tests are run in a parallelized fashion.
 * [coursera/deprecate-require](docs/rules/deprecate-require.md): Warn against requiring certain modules
 * [coursera/deprecate-module-property](docs/rules/deprecate-module-property.md): Warn against using certain properties on certain modules
-
+* [coursera/no-lazy-build-loader](docs/rules/no-lazy-build-loader.md): Disallow use of lazy build loader in production.
 
 
 

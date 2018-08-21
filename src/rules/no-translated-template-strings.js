@@ -11,7 +11,8 @@
 module.exports = {
   meta: {
     docs: {
-      description: "disallow allow template strings inside _t translation functions",
+      description:
+        "disallow allow template strings inside _t translation functions",
       recommended: false
     }
   },

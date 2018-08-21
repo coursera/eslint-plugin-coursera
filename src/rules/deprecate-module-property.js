@@ -1,4 +1,3 @@
-/* eslint-disable */
 /**
  * @fileoverview Deprecate the usage of a module property.
  * @author Lewis Chung
@@ -57,14 +56,11 @@ module.exports = {
       : {};
     const deprecationList = config.deprecationList || [];
 
-    const deprecatedModules = deprecationList.reduce(
-      (memo, object) => {
-        const newObj = Object.assign({}, memo);
-        newObj[object.moduleName] = object.deprecatedProperties;
-        return newObj;
-      },
-      {}
-    );
+    const deprecatedModules = deprecationList.reduce((memo, object) => {
+      const newObj = {};
+      newObj[object.moduleName] = object.deprecatedProperties;
+      return Object.assign(newObj, memo);
+    }, {});
 
     // Use this to track identifiers that represent required modules.
     // this will be used to track all singular imports (not ObjectPattern)
@@ -80,25 +76,27 @@ module.exports = {
     //----------------------------------------------------------------------
 
     /**
-         * Check if a node is a VariableDeclarator that is initialized to a named module.
-         * @param {ASTNode} node
-         */
+     * Check if a node is a VariableDeclarator that is initialized to a named module.
+     * @param {ASTNode} node
+     */
     function isRequireVariableDeclarator(node) {
       if (node.object && node.object.type !== "Identifier") {
         return;
       }
 
-      return node.init &&
+      return (
+        node.init &&
         node.init.type === "CallExpression" &&
-        node.init.callee.name === "require";
+        node.init.callee.name === "require"
+      );
     }
 
     /**
-         * Destructured imports are represented as an ObjectPattern
-         * in the babel-eslint ast.
-         * @param {ASTNode} node
-         * @param {string} deprecatedPath
-         */
+     * Destructured imports are represented as an ObjectPattern
+     * in the babel-eslint ast.
+     * @param {ASTNode} node
+     * @param {string} deprecatedPath
+     */
     function checkObjectPatternRequires(node, deprecatedPath) {
       const deprecatedProperties = deprecatedModules[deprecatedPath].map(
         d => d.property
@@ -108,7 +106,9 @@ module.exports = {
         if (deprecatedProperties.indexOf(property.value.name) > -1) {
           context.report(
             property.value,
-            `Property '${property.value.name}' on ${deprecatedPath} is deprecated. ` +
+            `Property '${
+              property.value.name
+            }' on ${deprecatedPath} is deprecated. ` +
               `${getMessage(deprecatedPath, property.value.name)}`
           );
         }
@@ -116,9 +116,9 @@ module.exports = {
     }
 
     /**
-         * @param {string} moduleName The module name is whatever is passed to a require statement.
-         * @param {string} moduleProperty Any name of an exported property of the module.
-         */
+     * @param {string} moduleName The module name is whatever is passed to a require statement.
+     * @param {string} moduleProperty Any name of an exported property of the module.
+     */
     function getMessage(moduleName, moduleProperty) {
       return deprecatedModules[moduleName].find(
         d => d.property === moduleProperty
@@ -126,8 +126,8 @@ module.exports = {
     }
 
     /**
-         * Run after all traversals collect information about nodes we need.
-         */
+     * Run after all traversals collect information about nodes we need.
+     */
     function checkAfterCollection() {
       Object.keys(memberObjects)
         .filter(memberObjectKey => !!requireIdentifierToPath[memberObjectKey])

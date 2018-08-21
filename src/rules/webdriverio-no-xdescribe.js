@@ -12,7 +12,8 @@
 module.exports = {
   meta: {
     docs: {
-      description: "xdescribe does not work in webdriverio to blacklist files because webdriverio does not prescan files for tests. when using xdescribe, selenium will still boot up a node in order to try to serve that file which is a waste.",
+      description:
+        "xdescribe does not work in webdriverio to blacklist files because webdriverio does not prescan files for tests. when using xdescribe, selenium will still boot up a node in order to try to serve that file which is a waste.",
       category: "webdriverio",
       recommended: false
     },
@@ -43,14 +44,14 @@ module.exports = {
     //----------------------------------------------------------------------
     return {
       Program(node) {
-        findTopLevelXDescribeExpressions(
-          node
-        ).forEach(topLevelXDescribeExpression => {
-          context.report(
-            topLevelXDescribeExpression,
-            "Do not use xdescribe to blacklist tests. Instead, change the filename suffix to `.ignore.js`"
-          );
-        });
+        findTopLevelXDescribeExpressions(node).forEach(
+          topLevelXDescribeExpression => {
+            context.report(
+              topLevelXDescribeExpression,
+              "Do not use xdescribe to blacklist tests. Instead, change the filename suffix to `.ignore.js`"
+            );
+          }
+        );
       }
     };
   }

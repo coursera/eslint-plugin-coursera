@@ -11,7 +11,8 @@
 module.exports = {
   meta: {
     docs: {
-      description: "Deprecate an entire module by specifying the path to the module relative to the project root.",
+      description:
+        "Deprecate an entire module by specifying the path to the module relative to the project root.",
       category: "Javascript deprecations",
       recommended: false
     },
@@ -50,10 +51,10 @@ module.exports = {
     //----------------------------------------------------------------------
 
     /**
-         * Get module name from the require path.
-         * @param {ASTNode} node CallExpression
-         * @returns {string} moduleName
-         */
+     * Get module name from the require path.
+     * @param {ASTNode} node CallExpression
+     * @returns {string} moduleName
+     */
     function getModuleNameFromRequirePath(node) {
       if (node.callee.name === "require") {
         return node.arguments[0].value;

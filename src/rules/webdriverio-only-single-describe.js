@@ -1,7 +1,7 @@
 /**
-* @fileoverview Since WebdriverIO parallelization works on a file per file basis, encourage developers to not have multiple describe blocks in the same file. Instead create a new file
-* @author Lewis Chung
-*/
+ * @fileoverview Since WebdriverIO parallelization works on a file per file basis, encourage developers to not have multiple describe blocks in the same file. Instead create a new file
+ * @author Lewis Chung
+ */
 "use strict";
 
 //------------------------------------------------------------------------------
@@ -11,7 +11,8 @@
 module.exports = {
   meta: {
     docs: {
-      description: "Since WebdriverIO parallelization works on a file per file basis, encourage developers to not have multiple describe blocks in the same file. Instead create a new file",
+      description:
+        "Since WebdriverIO parallelization works on a file per file basis, encourage developers to not have multiple describe blocks in the same file. Instead create a new file",
       category: "webdriverio",
       recommended: false
     },

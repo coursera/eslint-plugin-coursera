@@ -1,0 +1,3 @@
+# Discourages imports a non-app bundle to an app bundle(no-non-app-bundle-to-app-bundle-dependencies)
+
+This rule helps to mark when developers are importing from a non-app bundle to an app bundle. App budles should be the leaf nodes of the dependency graph, as they represent separate modular deployable artifacts. Depending on code within an app module leads to a complicated and hard to trace dependency graph that results in base bundle size bloating, as well as other unforseen consequences.

@@ -34,8 +34,8 @@ function addInvalidCodeTestOptions(code, filename) {
 // Tests
 // ----------------------------------------------------------------------------
 
-const bundleFileName = "/Users/cliu/base/coursera/web/static/bundles/phoenix/MyPhoenixComponent.jsx";
-const nonBundleFilename = "/Users/cliu/base/coursera/web/static/js/lib/mylib";
+const bundleFileName = "~/base/coursera/web/static/bundles/phoenix/MyPhoenixComponent.jsx";
+const nonBundleFilename = "~/base/coursera/web/static/js/lib/mylib";
 var ruleTester = new RuleTester();
 ruleTester.run("no-cross-app-dependencies", rule, {
   valid: [
